@@ -1,6 +1,6 @@
-pragma solidity 0.4.21;
+pragma solidity 0.4.23;
 
-import "zeppelin-solidity/contracts/token/ERC20/BasicToken.sol";
+import "openzeppelin-solidity/contracts/token/ERC20/BasicToken.sol";
 
 import './ERC223Basic.sol';
 import './ERC223ReceivingContract.sol';
@@ -34,7 +34,7 @@ contract ERC223BasicToken is ERC223Basic, BasicToken {
             // Retrieve the size of the code on target address, this needs assembly .
             codeLength := extcodesize(_to)
         }
-        require(super.transfer(_to, _value));
+        require(super.transfer(_to, _value), "ERC20 transafer fail");
         if(codeLength>0) {
             ERC223ReceivingContract receiver = ERC223ReceivingContract(_to);
             receiver.tokenFallback(msg.sender, _value, _data);
@@ -55,7 +55,7 @@ contract ERC223BasicToken is ERC223Basic, BasicToken {
      */
     function transfer(address _to, uint256 _value) public returns (bool) {
         bytes memory empty;
-        require(transfer(_to, _value, empty));
+        require(transfer(_to, _value, empty), "ERC223 transfer fail");
         return true;
     }
 }
