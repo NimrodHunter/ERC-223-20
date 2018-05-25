@@ -25,5 +25,5 @@ contract ERC223Basic is ERC20Basic {
       * @param _value Amount of tokens that will be transferred.
       * @param _data  Transaction metadata.
       */
-    function transfer(address _to, uint _value, bytes _data) public returns (bool);
+    function transfer(address _to, uint256 _value, bytes _data) public returns (bool);
 }
