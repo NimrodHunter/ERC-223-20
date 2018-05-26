@@ -1,6 +1,6 @@
 pragma solidity 0.4.23;
 
-import "openzeppelin-solidity/contracts/token/ERC20/BasicToken.sol";
+import "openzeppelin-solidity/contracts/token/ERC20/StandardToken.sol";
 
 import './ERC223Basic.sol';
 import './ERC223ReceivingContract.sol';
@@ -9,7 +9,7 @@ import './ERC223ReceivingContract.sol';
 /**
  * @title ERC223 standard token implementation.
  */
-contract ERC223BasicToken is ERC223Basic, BasicToken {
+contract ERC223BasicToken is ERC223Basic, StandardToken {
     function() public {
         //if ether is sent to this address, send it back.
         revert();
@@ -26,7 +26,7 @@ contract ERC223BasicToken is ERC223Basic, BasicToken {
      * @param _value Amount of tokens that will be transferred.
      * @param _data  Transaction metadata.
      */
-    function transfer(address _to, uint _value, bytes _data) public returns (bool) {
+    function transfer(address _to, uint256 _value, bytes _data) public returns (bool) {
         // Standard function transfer similar to ERC20 transfer with no _data .
         // Added due to backwards compatibility reasons .
         uint codeLength;

@@ -1,12 +1,12 @@
 pragma solidity 0.4.23;
 
-import "openzeppelin-solidity/contracts/token/ERC20/ERC20Basic.sol";
+import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 
 /**
  * @title ERC223 standard token interface.
  */
 
-contract ERC223Basic is ERC20Basic {
+contract ERC223Basic is ERC20 {
     /**
       * @dev triggered when transfer is successfully called.
       *
