@@ -1,6 +1,6 @@
 {
   "name": "@acatalan/erc223-20-contracts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "ERC-223 implementation compliant with ERC-20",
   "repository": "https://github.com/NimrodHunter/ERC-223-20",
   "license": "MIT",
