@@ -4,7 +4,6 @@
   "description": "ERC-223 implementation compliant with ERC-20",
   "repository": "https://github.com/NimrodHunter/ERC-223-20",
   "license": "MIT",
-  
   "directories": {
     "test": "test"
   },
@@ -23,12 +22,12 @@
     "babel-register": "^6.26.0",
     "ganache-cli": "^6.1.0",
     "solidity-coverage": "^0.4.15",
-    "truffle": "4.1.8",
+    "truffle": "4.1.14",
     "truffle-hdwallet-provider": "^0.0.3",
     "truffle-provider": "^0.0.4"
   },
   "dependencies": {
-    "openzeppelin-solidity": "^1.9.0"
+    "openzeppelin-solidity": "^2.0.0"
   },
   "babel": {
     "presets": [

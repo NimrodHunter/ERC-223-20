@@ -12,27 +12,21 @@ contract('Example Token', (accounts) => {
   });
 
   it('should set the start values properly', async () => {
-    let name = await token.name.call();
+    let name = await token.name();
     assert.equal(name, 'Example', 'should be Example');
 
-    let symbol = await token.symbol.call();
+    let symbol = await token.symbol();
     assert.equal(symbol, 'EXM', 'should be EXM');
 
-    let decimals = await token.decimals.call();
+    let decimals = await token.decimals();
     assert.equal(decimals.valueOf(), 18, 'should be 18');
 
-    let supply = await token.totalSupply.call();
+    let supply = await token.totalSupply();
     assert.equal(supply.valueOf(), 0, 'should be 0');
-
-    let _owner = await token.owner.call();
-    assert.equal(_owner, owner, 'should be the owner of the token');
-
-    let mintingFinished = await token.mintingFinished.call();
-    assert.equal(mintingFinished, false, 'should be false');
 
   });
 
-  it('should mint tokens properly until ends minting feature', async () => {
+  it('should mint tokens properly', async () => {
     await token.mint(owner, 1000);
 
     let supply = await token.totalSupply.call();
@@ -40,12 +34,6 @@ contract('Example Token', (accounts) => {
 
     let ownerBalance = await token.balanceOf.call(owner);
     assert.equal(ownerBalance.valueOf(), 1000, 'should be 1000');
-
-    await token.finishMinting();
-    let mintingFinished = await token.mintingFinished.call();
-    assert.equal(mintingFinished, true, 'should be true');
-
-    await expectThrow(token.mint(owner, 500));
 
     supply = await token.totalSupply.call();
     assert.equal(supply.valueOf(), 1000, 'should be 1000');
